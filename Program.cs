@@ -107,14 +107,19 @@ namespace SlotMachine
 
             switch (gameChoice)
             {
-               case 1:
-                    if (slotGrid[0,1] == slotGrid[1,1] && slotGrid[1, 1] == slotGrid[2,1])
+               case 1: //center line option
+                    bool centerLineWin = true;
+                    for (int i = 0; i < ROWS - 1; i++)
                     {
-                        Console.WriteLine("Center line win!!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No match.");
+                        if (slotGrid[i,1] != slotGrid[i + 1, 1])
+                        {
+                            Console.WriteLine("No match.");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You win!");
+                        }
                     }
                     break;
                 case 2:
