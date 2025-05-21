@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Transactions;
 
 namespace SlotMachine
 {
@@ -9,9 +10,9 @@ namespace SlotMachine
             //testing grid
             int[,] slotGrid =
         {
-    { 1, 5, 1 },
-    { 0, 1, 2 },
-    { 1, 0, 2 }
+    { 2, 1, 0 },
+    { 2, 1, 0 },
+    { 2, 1, 0 }
         };
 
 
@@ -126,15 +127,24 @@ namespace SlotMachine
                             if (slotGrid[middleLine, 0] != slotGrid[middleLine, i])
                             {
                                 centerWin = false;
-                                Console.WriteLine("No match.");
-                                balance -= wagerInt;
                                 break;
                             }
                             else
                             {
-                                Console.WriteLine("You win!");
-                                balance += wagerInt * 2;
+                                centerWin = true;
                             }
+                        }
+
+                        if (!centerWin)
+                        {
+                            Console.WriteLine("No match.");
+                            balance -= wagerInt;
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("You win!");
+                            balance += wagerInt * 2;
                         }
                         break;
 
@@ -143,22 +153,31 @@ namespace SlotMachine
                         bool horizontalWin = true;
                         for (int i = 0; i < ROWS; i++)
                         {
+                            bool rowWin = true;
+
                             for (int j = 1; j < COLUMNS; j++)
                             {
                                 if (slotGrid[i, 0] != slotGrid[i, j])
                                 {
-                                    horizontalWin = false;
+                                    rowWin = false;
                                     break;
                                 }
                             }
-                            if (horizontalWin)
+
+                            if (!rowWin)
                             {
-                                Console.WriteLine("You win!");
-                                balance += wagerInt * 2;
+                                horizontalWin = false;
                                 break;
                             }
                         }
-                        if (!horizontalWin)
+
+                        if (horizontalWin)
+                        {
+                            Console.WriteLine("You win!");
+                            balance += wagerInt * 2;
+                        }
+
+                        else
                         {
                             Console.WriteLine($"No match.");
                             balance -= wagerInt;
@@ -170,21 +189,29 @@ namespace SlotMachine
                         bool verticalWin = true;
                         for (int i = 0; i < ROWS; i++)
                         {
+                            bool columnWin = true;
                             for (int j = 0; j < COLUMNS; j++)
                             {
                                 if (slotGrid[0, j] != slotGrid[i, j])
                                 {
-                                    verticalWin = false;
+                                    columnWin = false;
                                     break;
                                 }
                             }
-                            if (verticalWin)
+
+                            if (!columnWin)
                             {
-                                Console.WriteLine("You win!");
-                                balance += wagerInt * 2;
+                                verticalWin = false;
                                 break;
                             }
                         }
+                        if (verticalWin)
+                        {
+                            Console.WriteLine("You win!");
+                            balance += wagerInt * 2;
+                            break;
+                        }
+
                         if (!verticalWin)
                         {
                             Console.WriteLine($"No match.");
@@ -242,6 +269,7 @@ namespace SlotMachine
 
                 Console.WriteLine($"Your current balance is ${balance}");
 
+                //After each game, ask the player if they want to continue playing
                 while (true)
                 {
                     Console.WriteLine("Keep playing? Y/N");
@@ -259,7 +287,7 @@ namespace SlotMachine
                     }
 
                     else
-                    {                  
+                    {
                         continue;
 
                     }
