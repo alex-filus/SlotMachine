@@ -7,14 +7,6 @@ namespace SlotMachine
     {
         static void Main(string[] args)
         {
-            //testing grid
-            int[,] slotGrid =
-        {
-    { 2, 1, 0 },
-    { 2, 1, 0 },
-    { 2, 1, 0 }
-        };
-
 
             const int ROWS = 3;
             const int COLUMNS = 3;
@@ -38,10 +30,10 @@ namespace SlotMachine
                     // Options of the games:
                     Console.WriteLine();
                     Console.WriteLine("Choose an option you would like to play. Enter a number 1-4:");
-                    Console.WriteLine("1 - Center line");
-                    Console.WriteLine("2 - All horizontal lines");
-                    Console.WriteLine("3 - All vertical lines");
-                    Console.WriteLine("4 - Diagonal lines");
+                    Console.WriteLine($"{CENTRAL_LINE} - Center line");
+                    Console.WriteLine($"{HORIZONTAL_LINES} - All horizontal lines");
+                    Console.WriteLine($"{VERTICAL_LINES} - All vertical lines");
+                    Console.WriteLine($"{DIAGONAL_LINES} - Diagonal lines");
                     Console.WriteLine();
 
                     string userInput = Console.ReadLine();
@@ -84,8 +76,8 @@ namespace SlotMachine
 
                 Console.WriteLine("Press SPACE to start the game.");
 
-                //Random random = new Random();
-                //int[,] slotGrid = new int[ROWS, COLUMNS];
+                Random random = new Random();
+                int[,] slotGrid = new int[ROWS, COLUMNS];
 
                 while (true)
                 {
@@ -100,9 +92,8 @@ namespace SlotMachine
                         {
                             for (int j = 0; j < COLUMNS; j++)
                             {
+                                slotGrid[i, j] = random.Next(1, 9);
                                 Console.Write(slotGrid[i, j] + " ");
-                                //slotGrid[i,j] = random.Next(1, 9);
-                                //Console.Write(slotGrid[i,j] + " ");
                             }
                             Console.WriteLine();
                         }
@@ -118,7 +109,7 @@ namespace SlotMachine
 
                 switch (gameChoice)
                 {
-                    case 1: //center line option
+                    case CENTRAL_LINE: //center line option
                         int middleLine = ROWS / 2;
                         bool centerWin = true;
 
@@ -148,7 +139,7 @@ namespace SlotMachine
                         }
                         break;
 
-                    case 2: //all horizontal lines option
+                    case HORIZONTAL_LINES: //all horizontal lines option
 
                         bool horizontalWin = true;
                         for (int i = 0; i < ROWS; i++)
@@ -184,7 +175,7 @@ namespace SlotMachine
                         }
                         break;
 
-                    case 3: //all vertical lines option
+                    case VERTICAL_LINES: //all vertical lines option
 
                         bool verticalWin = true;
                         for (int i = 0; i < ROWS; i++)
@@ -219,7 +210,7 @@ namespace SlotMachine
                         }
                         break;
 
-                    case 4: //Diagonal lines
+                    case DIAGONAL_LINES: //Diagonal lines
 
                         bool diagonalWin1 = true;
                         for (int i = 1; i < ROWS; i++)
