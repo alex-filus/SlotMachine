@@ -14,6 +14,8 @@ namespace SlotMachine
             const int HORIZONTAL_LINES = 2;
             const int VERTICAL_LINES = 3;
             const int DIAGONAL_LINES = 4;
+            const int RANDOM_LOW_RANGE = 1;
+            const int RANDOM_HIGH_RANGE = 9;
             int balance = 0;
             int wagerInt = 0;
 
@@ -92,7 +94,7 @@ namespace SlotMachine
                         {
                             for (int j = 0; j < COLUMNS; j++)
                             {
-                                slotGrid[i, j] = random.Next(1, 9);
+                                slotGrid[i, j] = random.Next(RANDOM_LOW_RANGE, RANDOM_HIGH_RANGE);
                                 Console.Write(slotGrid[i, j] + " ");
                             }
                             Console.WriteLine();
