@@ -20,6 +20,18 @@ namespace SlotMachine
             Console.WriteLine($"{Constants.VERTICAL_LINES} - All vertical lines");
             Console.WriteLine($"{Constants.DIAGONAL_LINES} - Diagonal lines");
             Console.WriteLine();
+
+            string userInput = Console.ReadLine();
+            int gameChoice = 0;
+            if (int.TryParse(userInput, out gameChoice) && gameChoice >= Constants.CENTRAL_LINE && gameChoice <= Constants.DIAGONAL_LINES)
+            {
+                break;
+            }
+
+            else
+            {
+                Console.WriteLine("Incorrect input. Please choose a number 1-4.");
+            }
         }
 
         public static void PrintIncorrectInputMessage()

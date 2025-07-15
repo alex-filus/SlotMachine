@@ -2,24 +2,6 @@
 {
     class Logic
     {
-        public static void EvaluateUserInput(string userInput)
-        {
-            userInput = Console.ReadLine();
-
-            if (int.TryParse(userInput, out gameChoice) && gameChoice >= Constants.CENTRAL_LINE && gameChoice <= Constants.DIAGONAL_LINES)
-            {
-                break;
-            }
-
-            else
-            {
-                //Console.WriteLine("Incorrect input. Please choose a number 1-4.");
-            }
-        }
-
-        public static void GenerateRandomNumber()
-            //code here
-
             public static bool CheckWin(int[,] slotGrid)
         {
             //code here

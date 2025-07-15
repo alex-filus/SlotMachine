@@ -26,7 +26,7 @@ namespace SlotMachine
             while (keepPlaying)
             {
 
-                int gameChoice = 0;
+                //int gameChoice = 0;
                 while (true)
                 {
                     // Options of the games:
