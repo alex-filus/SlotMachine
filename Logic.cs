@@ -2,8 +2,6 @@
 {
     class Logic
     {
-        public static readonly Random random = new Random();
-        int[,] slotGrid = new int[ROWS, COLUMNS];
         public static void EvaluateUserInput(string userInput)
         {
             userInput = Console.ReadLine();

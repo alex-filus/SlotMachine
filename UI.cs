@@ -11,20 +11,6 @@ namespace SlotMachine
             Console.WriteLine("Welcome to the Slot Machine!");
             Console.WriteLine();
         }
-
-        public static void PrintGrid(int[,] slotGrid)
-        {
-            for (int i = 0; i < Constants.ROWS; i++)
-            {
-                for (int j = 0; j < Constants.COLUMNS; j++)
-                {
-                    slotGrid[i, j] = random.Next(Constants.RANDOM_LOW_RANGE, Constants.RANDOM_HIGH_RANGE);
-                    Console.Write(slotGrid[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
-        }
-
         public static void PrintGameOptions()
         {
             Console.WriteLine();
@@ -43,24 +29,59 @@ namespace SlotMachine
 
         public static void AskForWager()
         {
-            Console.WriteLine();
-            Console.WriteLine("Enter your wager.");
-            string wager = Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Enter your wager.");
+                string wager = Console.ReadLine();
+                int wagerInt = 0;
+
+                if (wager.All(char.IsDigit))
+                {
+                    wagerInt = Convert.ToInt32(wager);
+                    Console.WriteLine($"Betting ${wagerInt}?");
+                    break;
+                }
+
+                else
+                {
+                    Console.WriteLine("Wrong input. Try again.");
+                }
+            }
         }
 
-        public static void PrintStartGameMessage()
+        public static void PrintGrid()
         {
-            Console.WriteLine("Press SPACE to start the game.");
-        }
+            while (true)
+            {
+                Console.WriteLine("Press SPACE to start the game.");
 
-        public static void PrintWrongInputMessage()
-        {
-            Console.WriteLine("Wrong input. Try again.");
-        }
+                Random random = new Random();
+                int[,] slotGrid = new int[Constants.ROWS, Constants.COLUMNS];
 
-        public static void PrintPressSpaceMessage()
-        {
-            Console.WriteLine("Please press SPACE instead.");
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+                //if user enters SPACE, proceed with generating the grid of random numbers
+                if (keyInfo.Key == ConsoleKey.Spacebar)
+                {
+                    for (int i = 0; i < Constants.ROWS; i++)
+                    {
+                        for (int j = 0; j < Constants.COLUMNS; j++)
+                        {
+                            slotGrid[i, j] = random.Next(Constants.RANDOM_LOW_RANGE, Constants.RANDOM_HIGH_RANGE);
+                            Console.Write(slotGrid[i, j] + " ");
+                        }
+                        Console.WriteLine();
+                    }
+                    break;
+                }
+
+                else
+                {
+                    Console.WriteLine("Please press SPACE instead.");
+                }
+
+            }
         }
 
         public static void PrintNoMatchMessage()
@@ -71,6 +92,22 @@ namespace SlotMachine
         public static void PrintYouWinMessage()
         {
             Console.WriteLine("You win!");
+        }
+
+        public static string AskIfKeepPlaying()
+        {
+            Console.WriteLine("Keep playing? Y/N");
+            string keepPlayingUserChoice = Console.ReadLine()?.ToUpper();
+        }
+
+        public static void PrintGoodbyeMessage()
+        {
+            Console.WriteLine("Ok, goodbye!");
+        }
+
+        public static void PrintBalance(int balance)
+        {
+            Console.WriteLine($"Your current balance is ${balance}");
         }
 
     }

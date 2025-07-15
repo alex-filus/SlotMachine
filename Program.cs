@@ -56,57 +56,57 @@ namespace SlotMachine
 
                 //if wager is not an integer, ask again
 
-                while (true)
+                //while (true)
 
-                {
-                    //string wager = Console.ReadLine();
+                //{
+                //    //string wager = Console.ReadLine();
 
-                    wagerInt = 0;
-                    if (wager.All(char.IsDigit))
-                    {
-                        wagerInt = Convert.ToInt32(wager);
-                        Console.WriteLine($"Betting ${wagerInt}?");
+                //    wagerInt = 0;
+                //    if (wager.All(char.IsDigit))
+                //    {
+                //        wagerInt = Convert.ToInt32(wager);
+                //        Console.WriteLine($"Betting ${wagerInt}?");
 
-                        break;
-                    }
+                //        break;
+                //    }
 
-                    else
-                    {
-                        //Console.WriteLine("Wrong input. Try again.");
-                    }
-                }
+                //    else
+                //    {
+                //        //Console.WriteLine("Wrong input. Try again.");
+                //    }
+                //}
 
-                //Console.WriteLine("Press SPACE to start the game.");
+                ////Console.WriteLine("Press SPACE to start the game.");
 
-                //Random random = new Random();
-                //int[,] slotGrid = new int[ROWS, COLUMNS];
+                ////Random random = new Random();
+                ////int[,] slotGrid = new int[ROWS, COLUMNS];
 
-                while (true)
-                {
+                //while (true)
+                //{
 
-                    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                //    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
-                    //if user enters SPACE, proceed with generating the grid of random numbers
-                    if (keyInfo.Key == ConsoleKey.Spacebar)
-                    {
-                        //for (int i = 0; i < ROWS; i++)
-                        //{
-                        //    for (int j = 0; j < COLUMNS; j++)
-                        //    {
-                        //        slotGrid[i, j] = random.Next(RANDOM_LOW_RANGE, RANDOM_HIGH_RANGE);
-                        //        Console.Write(slotGrid[i, j] + " ");
-                        //    }
-                        //    Console.WriteLine();
-                        //}
-                        break;
-                    }
+                //    //if user enters SPACE, proceed with generating the grid of random numbers
+                //    if (keyInfo.Key == ConsoleKey.Spacebar)
+                //    {
+                //        //for (int i = 0; i < ROWS; i++)
+                //        //{
+                //        //    for (int j = 0; j < COLUMNS; j++)
+                //        //    {
+                //        //        slotGrid[i, j] = random.Next(RANDOM_LOW_RANGE, RANDOM_HIGH_RANGE);
+                //        //        Console.Write(slotGrid[i, j] + " ");
+                //        //    }
+                //        //    Console.WriteLine();
+                //        //}
+                //        break;
+                //    }
 
-                    else
-                    {
-                        //Console.WriteLine("Please press SPACE instead.");
-                    }
+                //    else
+                //    {
+                //        //Console.WriteLine("Please press SPACE instead.");
+                //    }
 
-                }
+                //}
 
                 switch (gameChoice)
                 {
@@ -259,13 +259,13 @@ namespace SlotMachine
 
                 }
 
-                Console.WriteLine($"Your current balance is ${balance}");
+                //Console.WriteLine($"Your current balance is ${balance}");
 
                 //After each game, ask the player if they want to continue playing
                 while (true)
                 {
-                    Console.WriteLine("Keep playing? Y/N");
-                    string keepPlayingUserChoice = Console.ReadLine()?.ToUpper();
+                    //Console.WriteLine("Keep playing? Y/N");
+                    //string keepPlayingUserChoice = Console.ReadLine()?.ToUpper();
 
                     if (keepPlayingUserChoice == "Y")
                     {
@@ -274,7 +274,7 @@ namespace SlotMachine
 
                     if (keepPlayingUserChoice == "N")
                     {
-                        Console.WriteLine("Ok, goodbye!");
+                        //Console.WriteLine("Ok, goodbye!");
                         return;
                     }
 
