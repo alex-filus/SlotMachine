@@ -8,19 +8,19 @@ namespace SlotMachine
         static void Main(string[] args)
         {
 
-            const int ROWS = 3;
-            const int COLUMNS = 3;
-            const int CENTRAL_LINE = 1;
-            const int HORIZONTAL_LINES = 2;
-            const int VERTICAL_LINES = 3;
-            const int DIAGONAL_LINES = 4;
-            const int RANDOM_LOW_RANGE = 1;
-            const int RANDOM_HIGH_RANGE = 9;
+            //const int ROWS = 3;
+            //const int COLUMNS = 3;
+            //const int CENTRAL_LINE = 1;
+            //const int HORIZONTAL_LINES = 2;
+            //const int VERTICAL_LINES = 3;
+            //const int DIAGONAL_LINES = 4;
+            //const int RANDOM_LOW_RANGE = 1;
+            //const int RANDOM_HIGH_RANGE = 9;
             int balance = 0;
             int wagerInt = 0;
 
-            Console.WriteLine("Welcome to the Slot Machine!");
-            Console.WriteLine();
+            //Console.WriteLine("Welcome to the Slot Machine!");
+            //Console.WriteLine();
 
             bool keepPlaying = true;
             while (keepPlaying)
@@ -30,36 +30,36 @@ namespace SlotMachine
                 while (true)
                 {
                     // Options of the games:
-                    Console.WriteLine();
-                    Console.WriteLine("Choose an option you would like to play. Enter a number 1-4:");
-                    Console.WriteLine($"{CENTRAL_LINE} - Center line");
-                    Console.WriteLine($"{HORIZONTAL_LINES} - All horizontal lines");
-                    Console.WriteLine($"{VERTICAL_LINES} - All vertical lines");
-                    Console.WriteLine($"{DIAGONAL_LINES} - Diagonal lines");
-                    Console.WriteLine();
+                    //Console.WriteLine();
+                    //Console.WriteLine("Choose an option you would like to play. Enter a number 1-4:");
+                    //Console.WriteLine($"{CENTRAL_LINE} - Center line");
+                    //Console.WriteLine($"{HORIZONTAL_LINES} - All horizontal lines");
+                    //Console.WriteLine($"{VERTICAL_LINES} - All vertical lines");
+                    //Console.WriteLine($"{DIAGONAL_LINES} - Diagonal lines");
+                    //Console.WriteLine();
 
-                    string userInput = Console.ReadLine();
+                    //string userInput = Console.ReadLine();
 
-                    if (int.TryParse(userInput, out gameChoice) && gameChoice >= CENTRAL_LINE && gameChoice <= DIAGONAL_LINES)
-                    {
-                        break;
-                    }
+                    //if (int.TryParse(userInput, out gameChoice) && gameChoice >= CENTRAL_LINE && gameChoice <= DIAGONAL_LINES)
+                    //{
+                    //    break;
+                    //}
 
-                    else
-                    {
-                        Console.WriteLine("Incorrect input. Please choose a number 1-4.");
-                    }
+                    //else
+                    //{
+                    //    Console.WriteLine("Incorrect input. Please choose a number 1-4.");
+                    //}
                 }
 
-                Console.WriteLine();
-                Console.WriteLine("Enter your wager.");
+                //Console.WriteLine();
+                //Console.WriteLine("Enter your wager.");
 
                 //if wager is not an integer, ask again
 
                 while (true)
 
                 {
-                    string wager = Console.ReadLine();
+                    //string wager = Console.ReadLine();
 
                     wagerInt = 0;
                     if (wager.All(char.IsDigit))
@@ -72,14 +72,14 @@ namespace SlotMachine
 
                     else
                     {
-                        Console.WriteLine("Wrong input. Try again.");
+                        //Console.WriteLine("Wrong input. Try again.");
                     }
                 }
 
-                Console.WriteLine("Press SPACE to start the game.");
+                //Console.WriteLine("Press SPACE to start the game.");
 
-                Random random = new Random();
-                int[,] slotGrid = new int[ROWS, COLUMNS];
+                //Random random = new Random();
+                //int[,] slotGrid = new int[ROWS, COLUMNS];
 
                 while (true)
                 {
@@ -89,57 +89,56 @@ namespace SlotMachine
                     //if user enters SPACE, proceed with generating the grid of random numbers
                     if (keyInfo.Key == ConsoleKey.Spacebar)
                     {
-                        for (int i = 0; i < ROWS; i++)
-
-                        {
-                            for (int j = 0; j < COLUMNS; j++)
-                            {
-                                slotGrid[i, j] = random.Next(RANDOM_LOW_RANGE, RANDOM_HIGH_RANGE);
-                                Console.Write(slotGrid[i, j] + " ");
-                            }
-                            Console.WriteLine();
-                        }
+                        //for (int i = 0; i < ROWS; i++)
+                        //{
+                        //    for (int j = 0; j < COLUMNS; j++)
+                        //    {
+                        //        slotGrid[i, j] = random.Next(RANDOM_LOW_RANGE, RANDOM_HIGH_RANGE);
+                        //        Console.Write(slotGrid[i, j] + " ");
+                        //    }
+                        //    Console.WriteLine();
+                        //}
                         break;
                     }
 
                     else
                     {
-                        Console.WriteLine("Please press SPACE instead.");
+                        //Console.WriteLine("Please press SPACE instead.");
                     }
 
                 }
 
                 switch (gameChoice)
                 {
-                    case CENTRAL_LINE: //center line option
-                        int middleLine = ROWS / 2;
-                        bool centerWin = true;
+                    //case CENTRAL_LINE: //center line option
+                    //    int middleLine = ROWS / 2;
+                    //    bool centerWin = true;
 
-                        for (int i = middleLine; i < ROWS; i++)
-                        {
-                            if (slotGrid[middleLine, 0] != slotGrid[middleLine, i])
-                            {
-                                centerWin = false;
-                                break;
-                            }
-                            else
-                            {
-                                centerWin = true;
-                            }
-                        }
+                    //    for (int i = middleLine; i < ROWS; i++)
+                    //    {
+                    //        if (slotGrid[middleLine, 0] != slotGrid[middleLine, i])
+                    //        {
+                    //            centerWin = false;
+                    //            break;
+                    //        }
+                    //        else
+                    //        {
+                    //            centerWin = true;
+                    //        }
+                    //    }
 
-                        if (!centerWin)
-                        {
-                            Console.WriteLine("No match.");
-                            balance -= wagerInt;
-                        }
+                    //    if (!centerWin)
+                    //    {
+                    //        Console.WriteLine("No match.");
+                    //        balance -= wagerInt;
+                    //    }
 
-                        else
-                        {
-                            Console.WriteLine("You win!");
-                            balance += wagerInt * 2;
-                        }
-                        break;
+                    //    else
+                    //    {
+                    //        Console.WriteLine("You win!");
+                    //        balance += wagerInt * 2;
+                    //    }
+                    //    break;
 
                     case HORIZONTAL_LINES: //all horizontal lines option
 
