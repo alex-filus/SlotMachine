@@ -34,11 +34,6 @@ namespace SlotMachine
             }
         }
 
-        public static void PrintIncorrectInputMessage()
-        {
-            Console.WriteLine("Incorrect input. Please choose a number 1-4.");
-        }
-
         public static void AskForWager()
         {
             while (true)
@@ -106,15 +101,27 @@ namespace SlotMachine
             Console.WriteLine("You win!");
         }
 
-        public static string AskIfKeepPlaying()
+        public static void AskIfKeepPlaying(string keepPlayingUserChoice)
         {
             Console.WriteLine("Keep playing? Y/N");
-            string keepPlayingUserChoice = Console.ReadLine()?.ToUpper();
-        }
+            keepPlayingUserChoice = Console.ReadLine()?.ToUpper();
 
-        public static void PrintGoodbyeMessage()
-        {
-            Console.WriteLine("Ok, goodbye!");
+            if (keepPlayingUserChoice == "Y")
+            {
+                break;
+            }
+
+            if (keepPlayingUserChoice == "N")
+            {
+                Console.WriteLine("Ok, goodbye!");
+                return;
+            }
+
+            else
+            {
+                continue;
+
+            }
         }
 
         public static void PrintBalance(int balance)
