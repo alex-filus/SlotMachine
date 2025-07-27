@@ -57,7 +57,7 @@ namespace SlotMachine
             }
         }
 
-        public static void PrintGrid()
+        public static void PrintGrid(int[,] slotGrid)
         {
             while (true)
             {

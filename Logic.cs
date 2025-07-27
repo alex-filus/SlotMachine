@@ -4,12 +4,12 @@
     {
         public int balance = 0;
         public int wagerInt = 0;
-        public bool CheckWin(int[,] slotGrid)
+        public static bool CheckWin(int[,] slotGrid)
         {
             return CheckCentralLineWin(slotGrid) || CheckHorizontalLines(slotGrid) || CheckVerticalLines(slotGrid) || CheckDiagonalLines(slotGrid);
         }
 
-        public bool CheckCentralLineWin(int[,] slotGrid)
+        public static bool CheckCentralLineWin(int[,] slotGrid)
         {
             int middleLine = Constants.ROWS / 2;
             bool centerWin = true;
@@ -37,7 +37,7 @@
         }
 
 
-        public bool CheckHorizontalLines(int[,] slotGrid)
+        public static bool CheckHorizontalLines(int[,] slotGrid)
         {
             bool horizontalWin = true;
             for (int i = 0; i < Constants.ROWS; i++)
@@ -77,7 +77,7 @@
             return horizontalWin;
         }
 
-        public bool CheckVerticalLines(int[,] slotGrid)
+        public static bool CheckVerticalLines(int[,] slotGrid)
         {
             bool verticalWin = true;
             for (int i = 0; i < Constants.ROWS; i++)
@@ -113,7 +113,7 @@
             return verticalWin;
         }
 
-        public bool CheckDiagonalLines(int[,] slotGrid)
+        public static bool CheckDiagonalLines(int[,] slotGrid)
         {
             bool diagonalWin1 = true;
             for (int i = 1; i < Constants.ROWS; i++)

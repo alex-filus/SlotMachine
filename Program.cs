@@ -10,6 +10,9 @@ namespace SlotMachine
             //Display welcome message
             UI.PrintWelcomeMessage();
 
+            //initialize the grid
+            int[,] slotGrid = new int[Constants.ROWS, Constants.COLUMNS];
+
             bool keepPlaying = true;
             while (keepPlaying)
             {
@@ -22,9 +25,9 @@ namespace SlotMachine
 
                 UI.AskForWager();
 
-                UI.PrintGrid();
+                UI.PrintGrid(slotGrid);
 
-                Logic.CheckWin(int[,] slotGrid);
+                Logic.CheckWin(slotGrid);
 
                 UI.PrintBalance(balance);
 
