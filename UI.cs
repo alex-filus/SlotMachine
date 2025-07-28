@@ -64,7 +64,6 @@ namespace SlotMachine
                 Console.WriteLine("Press SPACE to start the game.");
 
                 Random random = new Random();
-                int[,] slotGrid = new int[Constants.ROWS, Constants.COLUMNS];
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
@@ -101,26 +100,26 @@ namespace SlotMachine
             Console.WriteLine("You win!");
         }
 
-        public static void AskIfKeepPlaying(string keepPlayingUserChoice)
+        public static bool AskIfKeepPlaying(string keepPlayingUserChoice)
         {
             Console.WriteLine("Keep playing? Y/N");
             keepPlayingUserChoice = Console.ReadLine()?.ToUpper();
 
             if (keepPlayingUserChoice == "Y")
             {
-                break;
+                return true;
             }
 
             if (keepPlayingUserChoice == "N")
             {
                 Console.WriteLine("Ok, goodbye!");
-                return;
+                return false;
             }
 
             else
             {
-                continue;
-
+                Console.WriteLine("Invalid input.");
+                return false;
             }
         }
 

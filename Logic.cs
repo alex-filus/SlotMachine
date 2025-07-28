@@ -2,8 +2,8 @@
 {
     class Logic
     {
-        public int balance = 0;
-        public int wagerInt = 0;
+        public static int balance = 0;
+        public static  int wagerInt = 0;
         public static bool CheckWin(int[,] slotGrid)
         {
             return CheckCentralLineWin(slotGrid) || CheckHorizontalLines(slotGrid) || CheckVerticalLines(slotGrid) || CheckDiagonalLines(slotGrid);

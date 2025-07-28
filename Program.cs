@@ -29,7 +29,7 @@ namespace SlotMachine
 
                 Logic.CheckWin(slotGrid);
 
-                UI.PrintBalance(balance);
+                UI.PrintBalance(Logic.balance);
 
                 //After each game, ask the player if they want to continue playing
                 while (true)
