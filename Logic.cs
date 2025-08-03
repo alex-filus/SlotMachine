@@ -3,10 +3,22 @@
     class Logic
     {
         public static int balance = 0;
-        public static  int wagerInt = 0;
-        public static bool CheckWin(int[,] slotGrid)
+        public static int wagerInt = 0;
+        public static bool CheckWin(int[,] slotGrid, int gameChoice)
         {
-            return CheckCentralLineWin(slotGrid) || CheckHorizontalLines(slotGrid) || CheckVerticalLines(slotGrid) || CheckDiagonalLines(slotGrid);
+            switch (gameChoice)
+            {
+                case Constants.CENTRAL_LINE:
+                    return CheckCentralLineWin(slotGrid);
+                case Constants.HORIZONTAL_LINES:
+                    return CheckHorizontalLines(slotGrid);
+                case Constants.VERTICAL_LINES:
+                    return CheckVerticalLines(slotGrid);
+                case Constants.DIAGONAL_LINES:
+                    return CheckDiagonalLines(slotGrid);
+                default:
+                    return false;
+            }
         }
 
         public static bool CheckCentralLineWin(int[,] slotGrid)
@@ -53,10 +65,9 @@
                     }
                 }
 
-
-                if (rowWin)
+                if (!rowWin)
                 {
-                    horizontalWin = true;
+                    horizontalWin = false;
                     break;
                 }
             }
@@ -92,9 +103,9 @@
                     }
                 }
 
-                if (columnWin)
+                if (!columnWin)
                 {
-                    verticalWin = true;
+                    verticalWin = false;
                     break;
                 }
             }

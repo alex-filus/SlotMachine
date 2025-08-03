@@ -16,31 +16,40 @@ namespace SlotMachine
             bool keepPlaying = true;
             while (keepPlaying)
             {
-                //int gameChoice = 0;
+                int gameChoice = 0;
                 while (true)
                 {
                     // Options of the games:
                     UI.PrintGameOptions();
+                    gameChoice = UI.CheckUserInput();
+                    break;
                 }
 
                 UI.AskForWager();
 
                 UI.PrintGrid(slotGrid);
 
-                Logic.CheckWin(slotGrid);
+                Logic.CheckWin(slotGrid, gameChoice);
 
                 UI.PrintBalance(Logic.balance);
 
-                //After each game, ask the player if they want to continue playing
+                //After each game, ask the player if they want to continue playing             
                 while (true)
                 {
-                    UI.AskIfKeepPlaying();
-                  
+                    if (!UI.AskIfKeepPlaying())
+                    {
+                        keepPlaying = false;
+                        break;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-            }
             }
         }
     }
+}
 
 
 

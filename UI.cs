@@ -20,17 +20,23 @@ namespace SlotMachine
             Console.WriteLine($"{Constants.VERTICAL_LINES} - All vertical lines");
             Console.WriteLine($"{Constants.DIAGONAL_LINES} - Diagonal lines");
             Console.WriteLine();
+        }
 
-            string userInput = Console.ReadLine();
-            int gameChoice = 0;
-            if (int.TryParse(userInput, out gameChoice) && gameChoice >= Constants.CENTRAL_LINE && gameChoice <= Constants.DIAGONAL_LINES)
+        public static int CheckUserInput()
+        {
+            while (true)
             {
-                break;
-            }
+                string userInput = Console.ReadLine();
+                int gameChoice = 0;
+                if (int.TryParse(userInput, out gameChoice) && gameChoice >= Constants.CENTRAL_LINE && gameChoice <= Constants.DIAGONAL_LINES)
+                {
+                    return gameChoice;
+                }
 
-            else
-            {
-                Console.WriteLine("Incorrect input. Please choose a number 1-4.");
+                else
+                {
+                    Console.WriteLine("Incorrect input. Please choose a number 1-4.");
+                }
             }
         }
 
@@ -63,7 +69,7 @@ namespace SlotMachine
             {
                 Console.WriteLine("Press SPACE to start the game.");
 
-                Random random = new Random();
+                 Random random = new Random();
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
@@ -100,8 +106,9 @@ namespace SlotMachine
             Console.WriteLine("You win!");
         }
 
-        public static bool AskIfKeepPlaying(string keepPlayingUserChoice)
+        public static bool AskIfKeepPlaying()
         {
+            string keepPlayingUserChoice = "";
             Console.WriteLine("Keep playing? Y/N");
             keepPlayingUserChoice = Console.ReadLine()?.ToUpper();
 
