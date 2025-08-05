@@ -2,26 +2,24 @@
 {
     class Logic
     {
-        public static int balance = 0;
-        public static int wagerInt = 0;
-        public static bool CheckWin(int[,] slotGrid, int gameChoice)
+        public static bool CheckWin(int[,] slotGrid, int gameChoice, int balance, int wagerInt)
         {
             switch (gameChoice)
             {
                 case Constants.CENTRAL_LINE:
-                    return CheckCentralLineWin(slotGrid);
+                    return CheckCentralLineWin(slotGrid, balance, wagerInt);
                 case Constants.HORIZONTAL_LINES:
-                    return CheckHorizontalLines(slotGrid);
+                    return CheckHorizontalLines(slotGrid, balance, wagerInt);
                 case Constants.VERTICAL_LINES:
-                    return CheckVerticalLines(slotGrid);
+                    return CheckVerticalLines(slotGrid, balance, wagerInt);
                 case Constants.DIAGONAL_LINES:
-                    return CheckDiagonalLines(slotGrid);
+                    return CheckDiagonalLines(slotGrid, balance, wagerInt);
                 default:
                     return false;
             }
         }
 
-        public static bool CheckCentralLineWin(int[,] slotGrid)
+        public static bool CheckCentralLineWin(int[,] slotGrid, int balance, int wagerInt)
         {
             int middleLine = Constants.ROWS / 2;
             bool centerWin = true;
@@ -49,7 +47,7 @@
         }
 
 
-        public static bool CheckHorizontalLines(int[,] slotGrid)
+        public static bool CheckHorizontalLines(int[,] slotGrid, int balance, int wagerInt)
         {
             bool horizontalWin = true;
             for (int i = 0; i < Constants.ROWS; i++)
@@ -88,7 +86,7 @@
             return horizontalWin;
         }
 
-        public static bool CheckVerticalLines(int[,] slotGrid)
+        public static bool CheckVerticalLines(int[,] slotGrid, int balance, int wagerInt)
         {
             bool verticalWin = true;
             for (int i = 0; i < Constants.ROWS; i++)
@@ -124,7 +122,7 @@
             return verticalWin;
         }
 
-        public static bool CheckDiagonalLines(int[,] slotGrid)
+        public static bool CheckDiagonalLines(int[,] slotGrid, int balance, int wagerInt)
         {
             bool diagonalWin1 = true;
             for (int i = 1; i < Constants.ROWS; i++)

@@ -5,7 +5,7 @@ namespace SlotMachine
 {
     class UI
     {
-
+        static readonly Random random = new Random();
         public static void PrintWelcomeMessage()
         {
             Console.WriteLine("Welcome to the Slot Machine!");
@@ -65,35 +65,31 @@ namespace SlotMachine
 
         public static void PrintGrid(int[,] slotGrid)
         {
-            while (true)
+            for (int i = 0; i < Constants.ROWS; i++)
             {
-                Console.WriteLine("Press SPACE to start the game.");
-
-                 Random random = new Random();
-
-                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-
-                //if user enters SPACE, proceed with generating the grid of random numbers
-                if (keyInfo.Key == ConsoleKey.Spacebar)
+                for (int j = 0; j < Constants.COLUMNS; j++)
                 {
-                    for (int i = 0; i < Constants.ROWS; i++)
-                    {
-                        for (int j = 0; j < Constants.COLUMNS; j++)
-                        {
-                            slotGrid[i, j] = random.Next(Constants.RANDOM_LOW_RANGE, Constants.RANDOM_HIGH_RANGE);
-                            Console.Write(slotGrid[i, j] + " ");
-                        }
-                        Console.WriteLine();
-                    }
-                    break;
+                    slotGrid[i, j] = random.Next(Constants.RANDOM_LOW_RANGE, Constants.RANDOM_HIGH_RANGE);
+                    Console.Write(slotGrid[i, j] + " ");
                 }
-
-                else
-                {
-                    Console.WriteLine("Please press SPACE instead.");
-                }
-
+                Console.WriteLine();
             }
+        }
+
+        public static void PrintPressSpaceToStartMessage()
+        {
+            Console.WriteLine("Press SPACE to start the game.");          
+        }
+
+        public static bool IsSpacePressed()
+        {
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+            return keyInfo.Key == ConsoleKey.Spacebar;
+        }
+
+        public static void PrintPressSpaceInsteadMessage()
+        {
+            Console.WriteLine("Please press SPACE instead.");
         }
 
         public static void PrintNoMatchMessage()

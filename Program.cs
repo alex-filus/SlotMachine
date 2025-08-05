@@ -5,15 +5,18 @@ namespace SlotMachine
 {
     internal class Program
     {
+        public static int balance = 0;
+        public static int wagerInt = 0;
         static void Main(string[] args)
         {
-            //Display welcome message
-            UI.PrintWelcomeMessage();
+       
+        //Display welcome message
+        UI.PrintWelcomeMessage();
 
             //initialize the grid
             int[,] slotGrid = new int[Constants.ROWS, Constants.COLUMNS];
 
-            bool keepPlaying = true;
+        bool keepPlaying = true;
             while (keepPlaying)
             {
                 int gameChoice = 0;
@@ -25,27 +28,38 @@ namespace SlotMachine
                     break;
                 }
 
-                UI.AskForWager();
+    UI.AskForWager();
 
-                UI.PrintGrid(slotGrid);
-
-                Logic.CheckWin(slotGrid, gameChoice);
-
-                UI.PrintBalance(Logic.balance);
-
-                //After each game, ask the player if they want to continue playing             
                 while (true)
                 {
-                    if (!UI.AskIfKeepPlaying())
+                    UI.PrintPressSpaceToStartMessage();
+                    if (UI.IsSpacePressed())
                     {
-                        keepPlaying = false;
+                        UI.PrintGrid(slotGrid);
                         break;
                     }
                     else
-                    {
-                        break;
-                    }
+{
+    UI.PrintPressSpaceInsteadMessage();
+}
                 }
+                Logic.CheckWin(slotGrid, gameChoice, balance, wagerInt);
+
+UI.PrintBalance(balance);
+
+//After each game, ask the player if they want to continue playing             
+while (true)
+{
+    if (!UI.AskIfKeepPlaying())
+    {
+        keepPlaying = false;
+        break;
+    }
+    else
+    {
+        break;
+    }
+}
             }
         }
     }
