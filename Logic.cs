@@ -2,20 +2,25 @@
 {
     class Logic
     {
-        public static bool CheckWin(int[,] slotGrid, int gameChoice, int balance, int wagerInt)
+        public static void CheckWin(int[,] slotGrid, int gameChoice, int balance, int wagerInt)
         {
             switch (gameChoice)
             {
                 case Constants.CENTRAL_LINE:
-                    return CheckCentralLineWin(slotGrid, balance, wagerInt);
+                    CheckCentralLineWin(slotGrid, balance, wagerInt);
+                    break;
                 case Constants.HORIZONTAL_LINES:
-                    return CheckHorizontalLines(slotGrid, balance, wagerInt);
+                    CheckHorizontalLines(slotGrid, balance, wagerInt);
+                    break;
                 case Constants.VERTICAL_LINES:
-                    return CheckVerticalLines(slotGrid, balance, wagerInt);
+                    CheckVerticalLines(slotGrid, balance, wagerInt);
+                    break;
                 case Constants.DIAGONAL_LINES:
-                    return CheckDiagonalLines(slotGrid, balance, wagerInt);
+                    CheckDiagonalLines(slotGrid, balance, wagerInt);
+                    break;
                 default:
-                    return false;
+                    Console.WriteLine("Invalid game option.");
+                    break;
             }
         }
 
