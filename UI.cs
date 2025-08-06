@@ -63,19 +63,28 @@ namespace SlotMachine
             }
         }
 
-        public static void PrintGrid(int[,] slotGrid)
+        public static void PopulateGrid(int[,] slotGrid)
         {
             for (int i = 0; i < Constants.ROWS; i++)
             {
                 for (int j = 0; j < Constants.COLUMNS; j++)
                 {
-                    slotGrid[i, j] = random.Next(Constants.RANDOM_LOW_RANGE, Constants.RANDOM_HIGH_RANGE);
+                    slotGrid[i, j] = random.Next(Constants.RANDOM_LOW_RANGE, Constants.RANDOM_HIGH_RANGE);                   
+                }
+            }
+        }
+
+        public static void PrintGrid(int[,] slotGrid)
+        {
+            for (int i = 0; i < Constants.ROWS; i++)
+            {
+                for (int j = 0; j < Constants.COLUMNS; j++)
+                {                 
                     Console.Write(slotGrid[i, j] + " ");
                 }
                 Console.WriteLine();
             }
         }
-
         public static void PrintPressSpaceToStartMessage()
         {
             Console.WriteLine("Press SPACE to start the game.");          

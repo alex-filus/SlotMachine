@@ -35,6 +35,7 @@ namespace SlotMachine
                     UI.PrintPressSpaceToStartMessage();
                     if (UI.IsSpacePressed())
                     {
+                        UI.PopulateGrid(slotGrid);
                         UI.PrintGrid(slotGrid);
                         break;
                     }
